@@ -1,0 +1,1 @@
+export const TICKERS = ['BTC', 'ETH', 'POL', 'SOL', 'DOT'];
