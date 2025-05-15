@@ -20,8 +20,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use((response) => {
   const existingToken = localStorage.getItem('cryptoWatcherToken');
   const responseToken = response.data?.token;
+  console.log('response token ----> ', responseToken);
 
-  if (!existingToken || existingToken !== responseToken) {
+  if (responseToken && (!existingToken || existingToken !== responseToken)) {
     localStorage.setItem('cryptoWatcherToken', responseToken);
   }
   

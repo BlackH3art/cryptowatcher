@@ -26,8 +26,7 @@ const buildApp = () => {
 
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJsDoc(swaggerConfig)));
   app.use('/user', userRouter);
-  // app.use('/tokens', auth, tokensRouter);
-  app.use('/tokens', tokensRouter);
+  app.use('/tokens', auth, tokensRouter);
 
   initializeUser();
   updateTokensPricesCronJob();
