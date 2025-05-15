@@ -37,7 +37,7 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
     description: '',
   });
 
-  const { refetchTokens } = useTokensContext();
+  const { refetchTokens, refetchTotal } = useTokensContext();
 
   const handleChange = ({ target: { name, value }}: ChangeEvent<HTMLInputElement>) => {
     setTokenData({
@@ -53,7 +53,9 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     const { amount, description } = tokenData;
     // TODO: handle unit
 
@@ -63,17 +65,13 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
         amount: Number(amount),
         description,
       });
-      await  refetchTokens();
+      await refetchTokens();
+      await refetchTotal();
 
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
-      setTokenData({
-        amount: 0,
-        unit: name,
-        description: '',
-      });
     }
   };
 
@@ -98,7 +96,7 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
           </CardTitle>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className='flex flex-col items-center'>
           <CardDescription className='text-center'>
             <p>
               {`Current price: $${price?.toFixed(2)}`}
@@ -108,7 +106,7 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
             </p>
           </CardDescription>
 
-          <form className='flex flex-col gap-4'>
+          <form className='flex flex-col gap-4 w-4/5' onSubmit={handleSubmit}>
             <FormField
               name='amount'
               label='Amount'
@@ -130,13 +128,14 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
               value={tokenData.description}
               onChange={handleChange}
             />
+
+            <Button type='submit' className='self-end w-22' variant='primary'>
+              {loading ? 'Loading..' : 'Submit'}
+            </Button>
           </form>
         </CardContent>
 
-        <CardFooter>
-          <Button variant='primary' onClick={handleSubmit}>
-            {loading ? 'Loading..' : 'Submit'}
-          </Button>
+        <CardFooter className='flex flex-col items-end gap-4'>
           <FaHeart color='red' size={32} />
         </CardFooter>
       </Card>

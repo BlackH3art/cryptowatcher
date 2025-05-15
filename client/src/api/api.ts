@@ -36,6 +36,7 @@ export const signIn = (loginData: LoginData) =>
   api.post<SigninResponse>('/user/sign-in', loginData);
 
 export const getTokens = () => api.get<Token[]>('/tokens');
+export const getTokensTotalValue = () => api.get<{ total: number }>('/tokens/total');
 export const updateTokenData = ({ id, ...data }: UpdateTokenData) =>
   api.patch<Token>(`/tokens/${id}`, data);
 export const updateTokenFavourite = (id: string) =>

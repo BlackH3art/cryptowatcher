@@ -8,7 +8,6 @@ import { MyCryptocurrencyCard } from './MyCryptocurrencyCard';
 export const MyCryptocurrencies: FC = () => {
   const { tokens } = useTokensContext();
   const myCryptocurrencies = tokens.filter(t => t.favourite);
-  console.log('myCryptocurrencies ----> ', myCryptocurrencies.map(t => t.name));
   
   const [active, setActive] = useState<number>(0);
 

@@ -44,10 +44,10 @@ export const LoginForm: FC = () => {
     try {
       setLoading(true);
 
-      const { data } = await signIn({ username, password });
-      
-      if (data.user) {
-        setUser(data.user);
+      const { data: { user } } = await signIn({ username, password });
+
+      if (user) {
+        setUser(user);
         navigate('/pick-favourties');
       }
 
