@@ -27,12 +27,13 @@ interface FavouriteCardProps {
 export const FavouriteCard: FC<FavouriteCardProps> = ({ token }) => {
   const { id, name, ticker, price, logo, priceUpdatedAt, favourite } = token;
 
-  const { refetchTokens } = useTokensContext();
+  const { refetchTokens, refetchTotal } = useTokensContext();
 
   const handleSetFavourite = async () => {
     try {
       await updateTokenFavourite(id);
       await refetchTokens();
+      await refetchTotal();
     } catch (error) {
       console.log(error);
     }

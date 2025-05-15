@@ -37,7 +37,7 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
     description: '',
   });
 
-  const { refetchTokens } = useTokensContext();
+  const { refetchTokens, refetchTotal } = useTokensContext();
 
   const handleChange = ({ target: { name, value }}: ChangeEvent<HTMLInputElement>) => {
     setTokenData({
@@ -63,7 +63,8 @@ export const MyCryptocurrencyCard: FC<MyCryptocurrencyCardProps> = ({ token }) =
         amount: Number(amount),
         description,
       });
-      await  refetchTokens();
+      await refetchTokens();
+      await refetchTotal();
 
     } catch (error) {
       console.log(error);
