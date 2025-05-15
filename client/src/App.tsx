@@ -9,7 +9,7 @@ import { AppLayout } from './layouts/AppLayout';
 
 export const App: FC = () => {
   return (
-    <div role='app' className='flex flex-col w-full bg-cwgray-2'>
+    <div role='app' className='flex flex-col w-full bg-cwgray-2 min-h-screen'>
       <Header />
 
       <Routes>
