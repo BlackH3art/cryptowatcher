@@ -22,7 +22,7 @@ model Token {
   description    String   @default("")
   price          Float
   favourite      Boolean  @default(false)
-  amount         Int      @default(0)
+  amount         Float    @default(0)
   priceUpdatedAt DateTime
   updatedAt      DateTime @updatedAt
 }

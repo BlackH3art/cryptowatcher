@@ -2690,7 +2690,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Token", 'String'>
     readonly price: FieldRef<"Token", 'Float'>
     readonly favourite: FieldRef<"Token", 'Boolean'>
-    readonly amount: FieldRef<"Token", 'Int'>
+    readonly amount: FieldRef<"Token", 'Float'>
     readonly priceUpdatedAt: FieldRef<"Token", 'DateTime'>
     readonly updatedAt: FieldRef<"Token", 'DateTime'>
   }
@@ -3199,7 +3199,7 @@ export namespace Prisma {
     description?: StringFilter<"Token"> | string
     price?: FloatFilter<"Token"> | number
     favourite?: BoolFilter<"Token"> | boolean
-    amount?: IntFilter<"Token"> | number
+    amount?: FloatFilter<"Token"> | number
     priceUpdatedAt?: DateTimeFilter<"Token"> | Date | string
     updatedAt?: DateTimeFilter<"Token"> | Date | string
   }
@@ -3228,7 +3228,7 @@ export namespace Prisma {
     description?: StringFilter<"Token"> | string
     price?: FloatFilter<"Token"> | number
     favourite?: BoolFilter<"Token"> | boolean
-    amount?: IntFilter<"Token"> | number
+    amount?: FloatFilter<"Token"> | number
     priceUpdatedAt?: DateTimeFilter<"Token"> | Date | string
     updatedAt?: DateTimeFilter<"Token"> | Date | string
   }, "id">
@@ -3262,7 +3262,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Token"> | string
     price?: FloatWithAggregatesFilter<"Token"> | number
     favourite?: BoolWithAggregatesFilter<"Token"> | boolean
-    amount?: IntWithAggregatesFilter<"Token"> | number
+    amount?: FloatWithAggregatesFilter<"Token"> | number
     priceUpdatedAt?: DateTimeWithAggregatesFilter<"Token"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Token"> | Date | string
   }
@@ -3340,7 +3340,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     favourite?: BoolFieldUpdateOperationsInput | boolean
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     priceUpdatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3353,7 +3353,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     favourite?: BoolFieldUpdateOperationsInput | boolean
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     priceUpdatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3379,7 +3379,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     favourite?: BoolFieldUpdateOperationsInput | boolean
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     priceUpdatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3392,7 +3392,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     favourite?: BoolFieldUpdateOperationsInput | boolean
-    amount?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
     priceUpdatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
