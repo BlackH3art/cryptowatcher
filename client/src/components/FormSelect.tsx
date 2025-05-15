@@ -24,7 +24,7 @@ export const FormSelect: FC<FormSelectProps> = ({ label, options, onChange }) =>
         </SelectTrigger>
         <SelectContent>
           {options.map(option => (
-            <SelectItem value={option}>{option}</SelectItem>
+            <SelectItem key={option} value={option}>{option}</SelectItem>
           ))}
         </SelectContent>
       </Select>
