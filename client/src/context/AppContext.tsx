@@ -13,8 +13,7 @@ interface AppContextProviderProps {
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [user, setUser] = useState<User | null>({ id: 1, username: 'admin'});
-  // const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   return (
     <AppContext.Provider value={{
