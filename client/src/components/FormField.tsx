@@ -22,6 +22,7 @@ export const FormField: FC<FormFieldProps> = ({ name, label, type, placeholder, 
         value={value}
         onChange={onChange}
         min={0}
+        step='any'
       />
     </Label>
   );
