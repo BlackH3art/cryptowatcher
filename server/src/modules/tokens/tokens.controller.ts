@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createManyTokens, getTokens, updateTokenData, updateTokenFavourite } from './tokens.service';
+import { createManyTokens, getTokens, getTotalTokensValue, updateTokenData, updateTokenFavourite } from './tokens.service';
 import { getCoinsDetailsForTickers, getCoinsPricesForTickers } from '../coins/coins.service';
 import { TICKERS } from '../../utils/constants/tickers';
 import { Prisma } from '../../../prisma/generated/prisma';
@@ -70,5 +70,16 @@ export const handleFavouriteToken = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
     throw new Error('Failed set token favourite');
+  }
+};
+
+export const handleGetTotalTokensValue = async (req: Request, res: Response) => {
+  try {
+    const [total] = await getTotalTokensValue();
+
+    res.status(200).json(total);
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to get total value');
   }
 };

@@ -34,3 +34,11 @@ export const updateTokenData = async ({ id, data }: TokenUpdateDataInput) => {
     data: { ...data },
   });
 };
+
+export const getTotalTokensValue = async () => {
+  return prisma.$queryRaw<{ total: number }[]>`
+    SELECT SUM(amount * price) as total
+    FROM "Token"
+    WHERE favourite = true
+  `;
+};
