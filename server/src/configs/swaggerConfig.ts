@@ -14,5 +14,5 @@ export const swaggerConfig: SwaggerOptions = {
       },
     ],
   },
-  apis: ['./index.js'],
+  apis: ["./src/modules/**/*.swagger.yaml"],
 };
