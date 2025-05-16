@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { LoginForm } from './LoginForm';
+import { LoginForm } from '@/components/login/LoginForm';
 import { useAppContext } from '@/hooks/useAppContext';
 
 export const Login: FC = () => {

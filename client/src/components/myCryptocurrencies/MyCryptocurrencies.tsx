@@ -1,9 +1,9 @@
 import { useState, type FC } from 'react';
-import { RouteTitle } from '../RouteTitle';
+import { RouteTitle } from '@/components/RouteTitle';
 import { useTokensContext } from '@/hooks/useTokensContext';
-import { FavouriteNavButton } from '../pickFavourties/FavouriteNavButton';
+import { FavouriteNavButton } from '@/components/pickFavourties/FavouriteNavButton';
 import { MdArrowBack, MdArrowForward } from 'react-icons/md';
-import { TokenCard } from '../TokenCard';
+import { TokenCard } from '@/components/TokenCard';
 
 export const MyCryptocurrencies: FC = () => {
   const { tokens } = useTokensContext();
