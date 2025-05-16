@@ -42,3 +42,9 @@ export const getTotalTokensValue = async () => {
     WHERE favourite = true
   `;
 };
+
+export const getTokenById = async (id: string) => {
+  return prisma.token.findUnique({
+    where: { id },
+  });
+};
