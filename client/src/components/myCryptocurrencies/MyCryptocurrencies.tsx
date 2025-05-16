@@ -1,9 +1,9 @@
 import { useState, type FC } from 'react';
-import { RouteTitle } from '../RouteTitle';
+import { RouteTitle } from '@/components/RouteTitle';
 import { useTokensContext } from '@/hooks/useTokensContext';
-import { FavouriteNavButton } from '../pickFavourties/FavouriteNavButton';
+import { FavouriteNavButton } from '@/components/pickFavourties/FavouriteNavButton';
 import { MdArrowBack, MdArrowForward } from 'react-icons/md';
-import { MyCryptocurrencyCard } from './MyCryptocurrencyCard';
+import { TokenCard } from '@/components/TokenCard';
 
 export const MyCryptocurrencies: FC = () => {
   const { tokens } = useTokensContext();
@@ -28,16 +28,18 @@ export const MyCryptocurrencies: FC = () => {
           {myCryptocurrencies[active - 1] && (
             <div className='absolute z-2 -translate-x-1/2 scale-80 left-0'>
               <div className='absolute w-full h-full z-3 bg-white/20 rounded-lg'/>
-              <MyCryptocurrencyCard 
+              <TokenCard
                 token={myCryptocurrencies[active - 1]}
+                portfolioMode
               />
             </div>
           )}
 
           {myCryptocurrencies[active] && (
             <div className='z-4'>
-              <MyCryptocurrencyCard 
+              <TokenCard
                 token={myCryptocurrencies[active]}
+                portfolioMode
               />
             </div>
           )}
@@ -45,8 +47,9 @@ export const MyCryptocurrencies: FC = () => {
           {myCryptocurrencies[active + 1] && (
             <div className='absolute z-2 translate-x-1/2 scale-80 right-0'>
               <div className='absolute w-full h-full z-3 bg-white/20 rounded-lg'/>
-              <MyCryptocurrencyCard 
+              <TokenCard
                 token={myCryptocurrencies[active + 1]}
+                portfolioMode
               />
             </div>
           )}

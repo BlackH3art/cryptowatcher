@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { NavigationLink } from './NavigationLink';
-
 import { FaHeart, FaDollarSign } from 'react-icons/fa';
+
+import { NavigationLink } from '@/components/sideNav/NavigationLink';
 
 export const SideNav: FC = () => {
   return (
