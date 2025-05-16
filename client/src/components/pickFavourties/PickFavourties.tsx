@@ -2,8 +2,8 @@ import { useState, type FC } from 'react';
 import { MdArrowForward, MdArrowBack } from 'react-icons/md';
 
 import { RouteTitle } from '@/components/RouteTitle';
-import { FavouriteCard } from './FavouriteCard';
-import { FavouriteNavButton } from './FavouriteNavButton';
+import { TokenCard } from '@/components/TokenCard';
+import { FavouriteNavButton } from '@/components/pickFavourties/FavouriteNavButton';
 import { useTokensContext } from '@/hooks/useTokensContext';
 
 export const PickFavourties: FC = () => {
@@ -28,27 +28,20 @@ export const PickFavourties: FC = () => {
           {tokens[active - 1] && (
             <div className='absolute z-2 -translate-x-1/2 scale-80 left-0'>
               <div className='absolute w-full h-full z-3 bg-white/20 rounded-lg'/>
-              <FavouriteCard 
-                token={tokens[active - 1]}
-              />
+              <TokenCard token={tokens[active - 1]}/>
             </div>
           )}
 
           {tokens[active] && (
             <div className='z-4'>
-              <FavouriteCard 
-                key='active'
-                token={tokens[active]}
-              />
+              <TokenCard token={tokens[active]} />
             </div>
           )}
 
           {tokens[active + 1] && (
             <div className='absolute z-2 translate-x-1/2 scale-80 right-0'>
               <div className='absolute w-full h-full z-3 bg-white/20 rounded-lg'/>
-              <FavouriteCard 
-                token={tokens[active + 1]}
-              />
+              <TokenCard token={tokens[active + 1]} />
             </div>
           )}
         </div>
