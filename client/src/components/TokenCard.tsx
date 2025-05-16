@@ -20,6 +20,7 @@ import { FormSelect } from '@/components/FormSelect';
 
 import type { Token } from '@/types/Token';
 import type { TokenData } from '@/types/TokenData';
+import type { SelectOptions } from '@/types/SelectOptions';
 import { updateTokenData, updateTokenFavourite } from '@/api/api';
 import { useTokensContext } from '@/hooks/useTokensContext';
 
@@ -39,6 +40,29 @@ export const TokenCard: FC<TokenCardProps> = ({ token, portfolioMode }) => {
   });
     
   const { refetchTokens, refetchTotal } = useTokensContext();
+
+  const options: SelectOptions = {
+    BTC: [
+      { unit: 'Bitcoin', value: 1 },
+      { unit: 'Satoshi', value: 1e8 },
+    ],
+    DOT: [
+      { unit: 'Polkadot', value: 1 },
+      { unit: 'Planck', value: 1e10 },
+    ],
+    ETH: [
+      { unit: 'Ethereum', value: 1 },
+      { unit: 'Wei', value: 1e18 },
+    ],
+    SOL: [
+      { unit: 'Solana', value: 1 },
+      { unit: 'Lamport', value: 1e9 },
+    ],
+    POL: [
+      { unit: 'Polygon', value: 1 },
+      { unit: 'Wei', value: 1e18 },
+    ],
+  };
 
   const handleSetFavourite = async () => {
     try {
@@ -67,13 +91,12 @@ export const TokenCard: FC<TokenCardProps> = ({ token, portfolioMode }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { amount, description } = tokenData;
-    // TODO: handle unit
+    const { amount, description, unit } = tokenData;
 
     try {
       await updateTokenData({
         id,
-        amount: Number(amount),
+        amount: Number(amount) / Number(unit),
         description,
       });
       await refetchTokens();
@@ -130,7 +153,7 @@ export const TokenCard: FC<TokenCardProps> = ({ token, portfolioMode }) => {
               <FormSelect 
                 label='Unit'
                 onChange={handleUnitSelect}
-                options={[name]}
+                options={options[ticker]}
               />
               <FormField
                 name='description'
