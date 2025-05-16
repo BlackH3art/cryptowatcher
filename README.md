@@ -23,7 +23,7 @@ CMC_API_KEY="CoinMarketCap API Key"
 JWT_SECRET="Some Super Secret String"
 ```
 
-3. Sign up on CoinMarketCap and create your `API_KEY` then update `.env`
+3. Sign up on [CoinMarketCap](https://pro.coinmarketcap.com/login) and create your `API_KEY` then update `.env`
 ```
 ...
 CMC_API_KEY="51*****b-****-****-****-6**********8"
