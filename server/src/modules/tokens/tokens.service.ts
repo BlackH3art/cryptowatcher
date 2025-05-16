@@ -22,7 +22,16 @@ export const updateTokenPrice = async ({ id, price, priceUpdatedAt }: TokenUpdat
 export const updateTokenFavourite = async (id: string) => {
   return prisma.$queryRaw<Token[]>`
     UPDATE "Token"
-    SET "favourite" = NOT "favourite"
+    SET 
+      "favourite" = NOT "favourite",
+      "amount" = CASE 
+        WHEN "favourite" = false THEN 0 
+        ELSE "amount" 
+      END,
+      "description" = CASE 
+        WHEN "favourite" = false THEN ''
+        ELSE "description" 
+      END
     WHERE id = ${id}
     RETURNING *
   `;
@@ -41,4 +50,10 @@ export const getTotalTokensValue = async () => {
     FROM "Token"
     WHERE favourite = true
   `;
+};
+
+export const getTokenById = async (id: string) => {
+  return prisma.token.findUnique({
+    where: { id },
+  });
 };

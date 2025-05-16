@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createManyTokens, getTokens, getTotalTokensValue, updateTokenData, updateTokenFavourite } from './tokens.service';
+import { createManyTokens, getTokenById, getTokens, getTotalTokensValue, updateTokenData, updateTokenFavourite } from './tokens.service';
 import { getCoinsDetailsForTickers, getCoinsPricesForTickers } from '../coins/coins.service';
 import { TICKERS } from '../../utils/constants/tickers';
 import { Prisma } from '../../../prisma/generated/prisma';
@@ -78,6 +78,21 @@ export const handleGetTotalTokensValue = async (req: Request, res: Response) => 
     const [total] = await getTotalTokensValue();
 
     res.status(200).json(total);
+  } catch (error) {
+    console.log(error);
+    throw new Error('Failed to get total value');
+  }
+};
+
+export const handleGetTokenById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const token = await getTokenById(id);
+
+    if (!token) res.status(404).json({ error: 'Token not found' });
+    else res.status(200).json(token);
+    
   } catch (error) {
     console.log(error);
     throw new Error('Failed to get total value');

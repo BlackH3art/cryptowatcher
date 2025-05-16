@@ -14,7 +14,7 @@ export const Header: FC = () => {
 
       {user && (
         <div>
-          My wallet USD value: ${total?.toFixed(2)}
+          My wallet USD value: ${total ? total.toFixed(2) : '0.00'}
         </div>
       )}
     </header>

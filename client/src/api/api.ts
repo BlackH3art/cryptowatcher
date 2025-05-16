@@ -21,12 +21,11 @@ api.interceptors.response.use((response) => {
   const existingToken = localStorage.getItem('cryptoWatcherToken');
   const responseToken = response.data?.token;
 
-  if (!existingToken || existingToken !== responseToken) {
+  if (responseToken && (!existingToken || existingToken !== responseToken)) {
     localStorage.setItem('cryptoWatcherToken', responseToken);
+    delete response.data.token;
   }
   
-  delete response.data.token;
-
   return response;
 }, (error) => {
   return Promise.reject(error);

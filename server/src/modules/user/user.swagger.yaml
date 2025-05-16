@@ -1,0 +1,85 @@
+# src/modules/user/user.swagger.yaml
+paths:
+  /user/sign-in:
+    post:
+      summary: Sign in user
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+              example:
+                username: johndoe
+                password: password123
+      responses:
+        '200':
+          description: Successfully signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  token:
+                    type: string
+                    description: JWT token
+                required:
+                  - user
+                  - token
+        '400':
+          description: Username and password are required
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Username and password are required
+        '401':
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid credentials
+        '404':
+          description: User doesn't exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User doesn't exist
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier
+        username:
+          type: string
+          description: Unique username
+      required:
+        - id
+        - username
