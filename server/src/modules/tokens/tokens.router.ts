@@ -10,9 +10,9 @@ import {
 const router = express.Router();
 
 router.get('/', handleGetTokens);
-router.get('/:id', handleGetTokenById);
-router.patch('/:id', handleUpdateToken);
 router.get('/total', handleGetTotalTokensValue);
+router.patch('/:id', handleUpdateToken);
+router.get('/:id', handleGetTokenById);
 router.patch('/favourite/:id', handleFavouriteToken);
 
 export default router;
