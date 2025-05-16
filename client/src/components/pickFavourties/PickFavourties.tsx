@@ -23,7 +23,7 @@ export const PickFavourties: FC = () => {
     <>
       <RouteTitle title='Pick favourties' />
 
-      {tokens.length && (
+      {tokens.length ? (
         <div className='relative flex justify-center items-center w-full overflow-hidden'>
           {tokens[active - 1] && (
             <div className='absolute z-2 -translate-x-1/2 scale-80 left-0'>
@@ -45,20 +45,28 @@ export const PickFavourties: FC = () => {
             </div>
           )}
         </div>
+      ) : (
+        <div className='flex items-center h-full justify-center'>
+          <p className='text-lg text-white'>
+            No tokens. Please wait for refetch or refresh the page.
+          </p>
+        </div>
       )}
 
-      <div className='text-white flex justify-center'>
-        <FavouriteNavButton
-          icon={<MdArrowBack size={64} />}
-          onClick={handleGoBack}
-          disabled={!tokens[active - 1]}
-        />
-        <FavouriteNavButton
-          icon={<MdArrowForward size={64} />}
-          onClick={handleGoForward}
-          disabled={!tokens[active + 1]}
-        />
-      </div>
+      {tokens.length ? (
+        <div className='text-white flex justify-center'>
+          <FavouriteNavButton
+            icon={<MdArrowBack size={64} />}
+            onClick={handleGoBack}
+            disabled={!tokens[active - 1]}
+          />
+          <FavouriteNavButton
+            icon={<MdArrowForward size={64} />}
+            onClick={handleGoForward}
+            disabled={!tokens[active + 1]}
+          />
+        </div>
+      ) : null}
     </>
   );
 };

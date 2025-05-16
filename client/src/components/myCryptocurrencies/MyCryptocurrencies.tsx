@@ -23,7 +23,7 @@ export const MyCryptocurrencies: FC = () => {
     <>
       <RouteTitle title='My cryptocurrencies' />
 
-      {myCryptocurrencies.length && (
+      {myCryptocurrencies.length ? (
         <div className='relative flex justify-center items-center w-full overflow-hidden'>
           {myCryptocurrencies[active - 1] && (
             <div className='absolute z-2 -translate-x-1/2 scale-80 left-0'>
@@ -54,20 +54,28 @@ export const MyCryptocurrencies: FC = () => {
             </div>
           )}
         </div>
+      ) :(
+        <div className='flex items-center h-full justify-center'>
+          <p className='text-lg text-white'>
+            No favourites yet! Go back and pick some!
+          </p>
+        </div>
       )}
 
-      <div className='text-white flex justify-center'>
-        <FavouriteNavButton
-          icon={<MdArrowBack size={64} />}
-          onClick={handleGoBack}
-          disabled={!myCryptocurrencies[active - 1]}
-        />
-        <FavouriteNavButton
-          icon={<MdArrowForward size={64} />}
-          onClick={handleGoForward}
-          disabled={!myCryptocurrencies[active + 1]}
-        />
-      </div>
+      {myCryptocurrencies.length ? (
+        <div className='text-white flex justify-center'>
+          <FavouriteNavButton
+            icon={<MdArrowBack size={64} />}
+            onClick={handleGoBack}
+            disabled={!myCryptocurrencies[active - 1]}
+          />
+          <FavouriteNavButton
+            icon={<MdArrowForward size={64} />}
+            onClick={handleGoForward}
+            disabled={!myCryptocurrencies[active + 1]}
+          />
+        </div>
+      ) : null}
     </>
   );
 };
