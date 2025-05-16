@@ -4,6 +4,13 @@ import { useTokensContext } from '@/hooks/useTokensContext';
 import { FavouriteNavButton } from '@/components/pickFavourties/FavouriteNavButton';
 import { MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { TokenCard } from '@/components/TokenCard';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export const MyCryptocurrencies: FC = () => {
   const { tokens } = useTokensContext();
@@ -23,7 +30,29 @@ export const MyCryptocurrencies: FC = () => {
     <>
       <RouteTitle title='My cryptocurrencies' />
 
-      {myCryptocurrencies.length && (
+      <Carousel
+        opts={{
+          align: "start",
+        }}
+        className="w-full border border-red-500"
+      >
+        <CarouselContent>
+          {myCryptocurrencies.map((token, index) => (
+            <CarouselItem key={index} className="basis-1/4">
+              <TokenCard
+                token={token}
+                portfolioMode
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className='text-white flex justify-center'>
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
+      </Carousel>
+      
+      {myCryptocurrencies.length ? (
         <div className='relative flex justify-center items-center w-full overflow-hidden'>
           {myCryptocurrencies[active - 1] && (
             <div className='absolute z-2 -translate-x-1/2 scale-80 left-0'>
@@ -54,7 +83,7 @@ export const MyCryptocurrencies: FC = () => {
             </div>
           )}
         </div>
-      )}
+      ) : null}
 
       <div className='text-white flex justify-center'>
         <FavouriteNavButton
